@@ -803,6 +803,146 @@
       })()
     </script>
 
+    <script>
+      // helper: format angka ke Rp
+      const fmt = n => new Intl.NumberFormat('id-ID').format(n)
+
+      // changeQty dipanggil oleh tombol + / - (onclick="changeQty(this,1)")
+      function changeQty(btn, delta) {
+        const card = btn.closest('.menu-card')
+        if (!card) return
+        const qtyEl = card.querySelector('.qty')
+        let q = parseInt(qtyEl.textContent || '0', 10)
+        if (Number.isNaN(q)) q = 0
+        q = Math.max(0, q + delta)
+        qtyEl.textContent = q
+      }
+
+      // orderWhatsApp: kumpulkan item, tunjukkan konfirmasi SweetAlert, lalu buka WA
+      function orderWhatsApp() {
+        const cards = Array.from(document.querySelectorAll('.menu-card'))
+        const items = []
+        let total = 0
+
+        cards.forEach(card => {
+          const name = card.dataset.name || 'Menu'
+          const price = parseInt(card.dataset.price || '0', 10) || 0
+          const qty =
+            parseInt(card.querySelector('.qty').textContent || '0', 10) || 0
+          if (qty > 0) {
+            const subtotal = price * qty
+            total += subtotal
+            items.push({ name, price, qty, subtotal })
+          }
+        })
+
+        if (items.length === 0) {
+          // jika belum pilih, beri peringatan
+          if (window.Swal) {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Belum memilih menu',
+              text: 'Silakan pilih minimal satu menu sebelum memesan.',
+              confirmButtonColor: '#2d5a27'
+            })
+          } else {
+            alert('Silakan pilih minimal satu menu sebelum memesan.')
+          }
+          return
+        }
+
+        // buat ringkasan order (pre)
+        const lines = items
+          .map(
+            it =>
+              `- ${it.name}\n  ${it.qty} x Rp ${fmt(it.price)} = Rp ${fmt(
+                it.subtotal
+              )}`
+          )
+          .join('\n\n')
+
+        const totalText = `Rp ${fmt(total)}`
+
+        // gunakan SweetAlert2 untuk konfirmasi + input nama & catatan
+        if (window.Swal) {
+          Swal.fire({
+            title: 'Konfirmasi Pesanan',
+            html:
+              `<pre style="text-align:left;margin:0 0 12px 0;white-space:pre-wrap">${lines}\n\nTotal: ${totalText}</pre>` +
+              `<input id="swal-name" class="swal2-input" placeholder="Nama (wajib)"/>` +
+              `<textarea id="swal-note" class="swal2-textarea" placeholder="Catatan / Alamat / permintaan khusus (opsional)"></textarea>`,
+            showCancelButton: true,
+            confirmButtonText: 'Pesan via WhatsApp',
+            cancelButtonText: 'Batal',
+            focusConfirm: false,
+            preConfirm: () => {
+              const name = document.getElementById('swal-name').value.trim()
+              const note = document.getElementById('swal-note').value.trim()
+              if (!name) {
+                Swal.showValidationMessage('Nama harus diisi')
+                return false
+              }
+              return { name, note }
+            },
+            didOpen: () => {
+              const el = document.getElementById('swal-name')
+              if (el) el.focus()
+            }
+          }).then(result => {
+            if (result.isConfirmed && result.value) {
+              const phone = '6281517955194'
+              const name = result.value.name
+              const note = result.value.note || ''
+
+              const message = `Assalamualaikum warahmatullahi wabarakatuh,
+
+Halo, saya ${name} ingin memesan:
+${items.map(it => `${it.qty}x ${it.name} (Rp ${fmt(it.price)})`).join(', ')}
+
+Rincian:
+${lines}
+
+Total sementara: ${totalText}
+
+Catatan / Alamat:
+${note}
+
+Terima kasih.`
+
+              const url = `https://wa.me/${phone}?text=${encodeURIComponent(
+                message
+              )}`
+              window.open(url, '_blank')
+            }
+          })
+        } else {
+          // fallback tanpa Swal
+          const name = prompt(`Masukkan nama untuk pesanan (wajib):`)
+          if (!name) return
+          const note = prompt('Catatan / alamat (opsional):') || ''
+          const message = `Assalamualaikum warahmatullahi wabarakatuh,
+
+Halo, saya ${name} ingin memesan:
+${items.map(it => `${it.qty}x ${it.name} (Rp ${fmt(it.price)})`).join(', ')}
+
+Rincian:
+${lines}
+
+Total sementara: ${totalText}
+
+Catatan / Alamat:
+${note}
+
+Terima kasih.`
+          const phone = '6281517955194'
+          window.open(
+            `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+            '_blank'
+          )
+        }
+      }
+    </script>
+
     <section id="testi" class="py-16 bg-[#f8faf7]">
       <div class="max-w-6xl mx-auto px-4">
         <h2
