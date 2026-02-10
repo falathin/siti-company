@@ -1,0 +1,86 @@
+/* --- Color variables only (sesuai permintaan) --- */
+:root {
+  --leaf-dark: #2d5a27; /* Daun Pisang (Utama) */
+  --leaf-light: #7db04b; /* Daun Pisang (Detail) */
+  --rice: #ffffff; /* Nasi & Bihun */
+  --tempe: #f2b705; /* Tahu & Tempe (Kuning Kunyit) */
+  --tempe-detail: #d97904; /* Tahu & Tempe (Detail) */
+  --brand-text: #1a1a1a; /* Nama Brand (Hitam/Abu Gelap) */
+  --nav-height: 72px;
+
+  /* Extra from user table */
+  --kerupuk: #f9f9f9; /* Kerupuk */
+  --bawang: #8b4513; /* Bawang Goreng */
+  --brand-green: #1b3618; /* Nama Brand (alternate) */
+}
+
+/* tiny helpers (only where Tailwind utility can't express easily) */
+.burger .bar {
+  width: 22px;
+  height: 2px;
+  background: var(--brand-text);
+  display: block;
+  position: relative;
+  transition: transform 0.28s ease, background 0.2s;
+}
+
+.burger .bar::before,
+.burger .bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--brand-text);
+  transition: transform 0.28s ease, opacity 0.2s;
+}
+
+.burger .bar::before {
+  transform: translateY(-7px);
+  top: 0;
+}
+
+.burger .bar::after {
+  transform: translateY(7px);
+  top: 0;
+}
+
+.burger[aria-expanded='true'] .bar {
+  background: transparent;
+}
+
+.burger[aria-expanded='true'] .bar::before {
+  transform: translateY(0px) rotate(45deg);
+}
+
+.burger[aria-expanded='true'] .bar::after {
+  transform: translateY(0px) rotate(-45deg);
+}
+
+/* active link styling kept via JS toggle */
+.nav-link-active {
+  color: var(--leaf-light) !important;
+  background: rgba(125, 176, 75, 0.08);
+  box-shadow: 0 6px 18px rgba(125, 176, 75, 0.06);
+}
+
+/* small chips fallback if needed */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+/* focus visible outline for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid rgba(45, 90, 39, 0.12);
+  outline-offset: 2px;
+  border-radius: 6px;
+}

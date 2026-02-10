@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nasi Uduk Badriyah, Gurih & Autentik (Tailwind)</title>
+
+    <!-- Tailwind Play CDN (untuk demo cepat) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="antialiased bg-[#fbfbf7] text-[var(--brand-text)]">
+    <!-- NAV -->
+    <nav
+      class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm"
+      role="navigation"
+      aria-label="Primary"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 flex items-center justify-between h-[var(--nav-height)]"
+      >
+        <div class="flex items-center gap-3">
+          <!-- logo bulat penuh -->
+          <img
+            src="logo.png"
+            alt="Logo Nasi Uduk Badriyah"
+            class="w-11 h-11 object-cover rounded-full shadow-md"
+          />
+          <h4 class="text-base font-extrabold">Nasi Uduk Badriyah</h4>
+        </div>
+
+        <!-- desktop links -->
+        <div class="hidden md:flex items-center gap-4" aria-hidden="false">
+          <a
+            href="#home"
+            class="nav-link px-3 py-2 rounded-md font-semibold"
+            aria-current="page"
+            >Home</a
+          >
+          <a href="#about" class="nav-link px-3 py-2 rounded-md font-semibold"
+            >Tentang</a
+          >
+          <a href="#menu" class="nav-link px-3 py-2 rounded-md font-semibold"
+            >Menu</a
+          >
+          <a href="#testi" class="nav-link px-3 py-2 rounded-md font-semibold"
+            >Testimoni</a
+          >
+          <a href="#contact" class="nav-link px-3 py-2 rounded-md font-semibold"
+            >Kontak</a
+          >
+        </div>
+
+        <!-- burger (mobile) -->
+        <div class="md:hidden flex items-center">
+          <button
+            class="burger p-2 rounded-lg"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            aria-label="Buka menu"
+          >
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- mobile menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden bg-white shadow-md rounded-b-lg max-h-0 overflow-hidden transition-[max-height] duration-300"
+        aria-hidden="true"
+      >
+        <div class="flex flex-col gap-1 px-4 py-3">
+          <a
+            href="#home"
+            class="nav-link-mobile flex items-center gap-3 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition"
+          >
+            <i class="fa-solid fa-house text-[var(--leaf-dark)]"></i>
+            Home
+          </a>
+
+          <a
+            href="#about"
+            class="nav-link-mobile flex items-center gap-3 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition"
+          >
+            <i class="fa-solid fa-leaf text-[var(--leaf-dark)]"></i>
+            Tentang
+          </a>
+
+          <a
+            href="#menu"
+            class="nav-link-mobile flex items-center gap-3 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition"
+          >
+            <i class="fa-solid fa-book-open text-[var(--leaf-dark)]"></i>
+            Menu
+          </a>
+
+          <a
+            href="#testi"
+            class="nav-link-mobile flex items-center gap-3 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition"
+          >
+            <i class="fa-solid fa-star text-[var(--leaf-dark)]"></i>
+            Testimoni
+          </a>
+
+          <a
+            href="#contact"
+            class="nav-link-mobile flex items-center gap-3 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition"
+          >
+            <i class="fa-solid fa-phone text-[var(--leaf-dark)]"></i>
+            Kontak
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header
+      id="home"
+      class="py-20 md:py-24"
+      style="
+        background: linear-gradient(
+          135deg,
+          var(--leaf-light),
+          var(--leaf-dark)
+        );
+      "
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 flex items-center gap-8 flex-wrap justify-center text-[var(--rice)]"
+      >
+        <!-- LOGO -->
+        <img
+          src="logo.png"
+          alt="Nasi Uduk Badriyah"
+          class="w-40 rounded-full bg-[var(--rice)] p-3 shadow-2xl"
+        />
+
+        <div class="text-center md:text-left max-w-xl">
+          <!-- STATUS -->
+          <div
+            id="statusBox"
+            class="inline-flex items-center gap-2 mb-3 px-4 py-2 rounded-full bg-white/20 backdrop-blur text-sm font-bold"
+          >
+            <i id="statusIcon" class="fa-solid fa-store"></i>
+            <span id="statusText">Mengecek status...</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-extrabold">
+            Nasi Uduk Badriyah
+          </h1>
+
+          <p class="mt-2 font-semibold opacity-95">
+            Gurih dan autentik, nasi wangi santan dengan lauk tradisional,
+            dibungkus daun pisang, sudah menemani sejak 2018.
+          </p>
+
+          <!-- JAM -->
+          <div class="mt-3 text-sm font-medium text-white/90">
+            <i class="fa-solid fa-clock"></i>
+            <strong>05.00 – 11.00 WIB</strong>
+            <div class="text-xs opacity-90">
+              Setiap hari (sehabis Subuh – menjelang siang)
+            </div>
+          </div>
+
+          <div
+            class="mt-6 flex gap-3 justify-center md:justify-start flex-wrap"
+          >
+            <!-- WA -->
+            <button
+              onclick="window.open('https://wa.me/6281517955194','_blank')"
+              class="flex items-center gap-2 bg-[var(--leaf-dark)] hover:bg-[var(--brand-green)] text-[var(--rice)] font-bold px-5 py-3 rounded-xl shadow-lg transition"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+              Pesan Sekarang
+            </button>
+
+            <!-- MENU -->
+            <button
+              onclick="document.querySelector('#menu').scrollIntoView({behavior:'smooth'})"
+              class="flex items-center gap-2 bg-[var(--tempe)] hover:opacity-90 text-[var(--brand-text)] font-bold px-5 py-3 rounded-xl shadow-lg transition"
+            >
+              <i class="fa-solid fa-book-open"></i>
+              Lihat Menu
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <script>
+      function updateStatus() {
+        const now = new Date()
+
+        // WIB (UTC+7)
+        const hours = now.getUTCHours() + 7
+        const minutes = now.getUTCMinutes()
+        const timeNow = hours + minutes / 60
+
+        const openTime = 5 // 05.00
+        const closeTime = 11 // 11.00
+
+        const statusText = document.getElementById('statusText')
+        const statusIcon = document.getElementById('statusIcon')
+        const statusBox = document.getElementById('statusBox')
+
+        if (timeNow >= openTime && timeNow < closeTime) {
+          statusText.textContent = 'SEDANG BUKA'
+          statusIcon.className = 'fa-solid fa-store'
+          statusBox.classList.add('bg-green-500/20')
+          statusBox.classList.remove('bg-red-500/20')
+        } else {
+          statusText.textContent = 'SEDANG TUTUP'
+          statusIcon.className = 'fa-solid fa-store-slash'
+          statusBox.classList.add('bg-red-500/20')
+          statusBox.classList.remove('bg-green-500/20')
+        }
+      }
+
+      updateStatus()
+      setInterval(updateStatus, 60000) // update tiap 1 menit
+    </script>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-2xl font-extrabold text-[var(--leaf-dark)] text-center mb-7"
+        >
+          Tentang Nasi Uduk Badriyah
+        </h2>
+
+        <div
+          class="bg-white rounded-xl p-6 shadow-md flex flex-col md:flex-row gap-6 items-center"
+        >
+          <!-- LOGO -->
+          <div class="w-36 md:w-56 flex-shrink-0 flex justify-center">
+            <img
+              src="logo.png"
+              alt="Nasi Uduk Badriyah"
+              class="w-full rounded-full object-cover shadow-lg"
+            />
+          </div>
+
+          <!-- CONTENT -->
+          <div class="flex-1 min-w-0 text-center md:text-left">
+            <p
+              class="text-[var(--leaf-dark)] font-bold mb-2 flex items-center gap-2 justify-center md:justify-start"
+            >
+              <i class="fa-solid fa-leaf"></i>
+              Rasa tradisional, disajikan hangat dan wangi
+            </p>
+
+            <p class="text-[#2e4f3b] mb-4">
+              Nasi uduk keliling sekitar Kalangsari mulai hadir sejak 2018.
+              Dibuat dari santan pilihan dan dimasak setiap hari agar rasanya selalu segar.
+              Disajikan lengkap dengan tempe goreng, tahu kuning, bihun, sambal kacang,
+              serta taburan bawang goreng yang bikin cita rasanya tetap konsisten.
+            </p>
+
+            <!-- INFO STRIP -->
+            <div
+              class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 bg-gradient-to-r from-[rgba(249,228,173,0.10)] to-[rgba(45,90,39,0.03)] border-l-4 rounded-lg p-4"
+              style="border-left-color: var(--tempe)"
+            >
+              <div
+                class="flex items-center gap-2 font-extrabold text-[var(--leaf-dark)]"
+              >
+                <i class="fa-solid fa-check-circle"></i>
+                Dibuat setiap hari • Bahan segar • Tanpa pengawet
+              </div>
+
+              <div
+                class="flex items-center gap-2 font-semibold text-[#466650] sm:ml-auto"
+              >
+                <i class="fa-solid fa-motorcycle"></i>
+                Siap antar dan catering
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" class="py-16 bg-[var(--kerupuk)]">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl font-extrabold text-[var(--leaf-dark)] text-center mb-10"
+        >
+          Menu Unggulan
+        </h2>
+
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- CARD 1 -->
+          <div
+            class="menu-card bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition"
+            data-name="Nasi Uduk Tempe Tahu Bihun"
+            data-price="5000"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1604908177522-7f2b0f9d2b3d?auto=format&fit=crop&w=400&q=60"
+              class="w-full h-36 rounded-xl object-cover mb-4"
+            />
+
+            <span
+              class="inline-block mb-2 px-3 py-1 rounded-full text-xs font-bold bg-[var(--tempe)] text-black"
+            >
+              Favorit
+            </span>
+
+            <h4 class="font-extrabold text-lg text-[var(--brand-text)]">
+              Nasi Uduk Tempe Tahu Bihun
+            </h4>
+
+            <p class="text-sm text-[#516655] mt-1">
+              Nasi uduk gurih dengan tempe, tahu, dan bihun.
+            </p>
+
+            <p class="mt-2 font-bold text-[var(--leaf-dark)]">Rp 5.000</p>
+
+            <div class="flex items-center gap-3 mt-4">
+              <button
+                onclick="changeQty(this,-1)"
+                class="w-8 h-8 rounded-full bg-gray-200 font-bold"
+              >
+                −
+              </button>
+              <span class="qty font-bold text-lg">0</span>
+              <button
+                onclick="changeQty(this,1)"
+                class="w-8 h-8 rounded-full bg-[var(--leaf-light)] text-white font-bold"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div
+            class="menu-card bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition"
+            data-name="Nasi Uduk Tahu Tempe Mie"
+            data-price="5000"
+          >
+            <img
+              src="nasi-uduk-2.png"
+              class="w-full h-36 rounded-xl object-cover mb-4"
+            />
+
+            <span
+              class="inline-block mb-2 px-3 py-1 rounded-full text-xs font-bold bg-[var(--leaf-light)] text-white"
+            >
+              Best Seller
+            </span>
+
+            <h4 class="font-extrabold text-lg text-[var(--brand-text)]">
+              Nasi Uduk Tahu Tempe Mie
+            </h4>
+
+            <p class="text-sm text-[#516655] mt-1">
+              Paduan mie, tahu, dan tempe dengan nasi uduk hangat.
+            </p>
+
+            <p class="mt-2 font-bold text-[var(--leaf-dark)]">Rp 5.000</p>
+
+            <div class="flex items-center gap-3 mt-4">
+              <button
+                onclick="changeQty(this,-1)"
+                class="w-8 h-8 rounded-full bg-gray-200 font-bold"
+              >
+                −
+              </button>
+              <span class="qty font-bold text-lg">0</span>
+              <button
+                onclick="changeQty(this,1)"
+                class="w-8 h-8 rounded-full bg-[var(--leaf-light)] text-white font-bold"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div
+            class="menu-card bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition"
+            data-name="Nasi Uduk + Bala-bala + Mie Tahu Tempe"
+            data-price="6000"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1604908554021-58b0b0b3f8d3?auto=format&fit=crop&w=400&q=60"
+              class="w-full h-36 rounded-xl object-cover mb-4"
+            />
+
+            <span
+              class="inline-block mb-2 px-3 py-1 rounded-full text-xs font-bold bg-[var(--tempe-detail)] text-white"
+            >
+              Paket Lengkap
+            </span>
+
+            <h4 class="font-extrabold text-lg text-[var(--brand-text)]">
+              Nasi Uduk + Bala-bala + Mie
+            </h4>
+
+            <p class="text-sm text-[#516655] mt-1">
+              Nasi uduk dengan bala-bala, mie, tahu dan tempe.
+            </p>
+
+            <p class="mt-2 font-bold text-[var(--tempe-detail)]">Rp 6.000</p>
+
+            <div class="flex items-center gap-3 mt-4">
+              <button
+                onclick="changeQty(this,-1)"
+                class="w-8 h-8 rounded-full bg-gray-200 font-bold"
+              >
+                −
+              </button>
+              <span class="qty font-bold text-lg">0</span>
+              <button
+                onclick="changeQty(this,1)"
+                class="w-8 h-8 rounded-full bg-[var(--leaf-light)] text-white font-bold"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 4 -->
+          <div
+            class="menu-card bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition"
+            data-name="Nasi Uduk + Bala-bala + Bihun Tahu Tempe"
+            data-price="6000"
+          >
+            <img
+              src="nasi-uduk-4.png"
+              class="w-full h-36 rounded-xl object-cover mb-4"
+            />
+
+            <span
+              class="inline-block mb-2 px-3 py-1 rounded-full text-xs font-bold bg-[var(--bawang)] text-white"
+            >
+              Recommended
+            </span>
+
+            <h4 class="font-extrabold text-lg text-[var(--brand-text)]">
+              Nasi Uduk + Bala-bala + Bihun
+            </h4>
+
+            <p class="text-sm text-[#516655] mt-1">
+              Nasi uduk komplit dengan bala-bala, bihun, tahu dan tempe.
+            </p>
+
+            <p class="mt-2 font-bold text-[var(--tempe-detail)]">Rp 6.000</p>
+
+            <div class="flex items-center gap-3 mt-4">
+              <button
+                onclick="changeQty(this,-1)"
+                class="w-8 h-8 rounded-full bg-gray-200 font-bold"
+              >
+                −
+              </button>
+              <span class="qty font-bold text-lg">0</span>
+              <button
+                onclick="changeQty(this,1)"
+                class="w-8 h-8 rounded-full bg-[var(--leaf-light)] text-white font-bold"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="mt-10 text-center">
+          <button
+            onclick="orderWhatsApp()"
+            class="bg-[var(--leaf-dark)] hover:bg-[var(--brand-green)] text-white font-extrabold px-8 py-4 rounded-xl shadow-lg transition"
+          >
+            Pesan Sekarang via WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function changeQty(btn, change) {
+        const qtyEl = btn.parentElement.querySelector('.qty')
+        let qty = parseInt(qtyEl.textContent)
+        qty = Math.max(0, qty + change)
+        qtyEl.textContent = qty
+      }
+
+      function orderWhatsApp() {
+        const cards = document.querySelectorAll('.menu-card')
+        let orderList = []
+        let total = 0
+
+        cards.forEach(card => {
+          const name = card.dataset.name
+          const price = parseInt(card.dataset.price)
+          const qty = parseInt(card.querySelector('.qty').textContent)
+
+          if (qty > 0) {
+            const subtotal = price * qty
+            total += subtotal
+
+            orderList.push(
+              `- ${name}\n  ${qty} x Rp ${price.toLocaleString()} = Rp ${subtotal.toLocaleString()}`
+            )
+          }
+        })
+
+        if (!orderList.length) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Menu belum dipilih',
+            text: 'Silakan pilih minimal satu menu terlebih dahulu',
+            confirmButtonColor: '#2d5a27'
+          })
+          return
+        }
+
+        const message = `Assalamualaikum warahmatullahi wabarakatuh,
+
+    Halo, saya ingin melakukan pemesanan dengan rincian:
+
+    ${orderList.join('\n\n')}
+
+    Total sementara: Rp ${total.toLocaleString()}
+
+    Mohon diinformasikan total akhir dan estimasi waktu pengambilan.
+
+    Terima kasih.`
+
+        const phone = '6281517955194'
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+
+        Swal.fire({
+          icon: 'question',
+          title: 'Konfirmasi Pesanan',
+          html: `<pre style="text-align:left">${orderList.join(
+            '\n\n'
+          )}\n\nTotal: Rp ${total.toLocaleString()}</pre>`,
+          showCancelButton: true,
+          confirmButtonText: 'Pesan via WhatsApp',
+          cancelButtonText: 'Batal',
+          confirmButtonColor: '#25D366'
+        }).then(result => {
+          if (result.isConfirmed) {
+            window.open(url, '_blank')
+          }
+        })
+      }
+    </script>
+
+    <section id="testi" class="py-16 bg-[#f8faf7]">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[var(--leaf-dark)] text-center mb-8 flex items-center justify-center gap-3"
+        >
+          <i
+            class="fas fa-comment-dots text-green-500 text-2xl sm:text-3xl md:text-4xl"
+          ></i>
+          Apa Kata Pelanggan
+        </h2>
+
+        <div
+          id="testiContainer"
+          class="overflow-hidden cursor-grab active:cursor-grabbing"
+        >
+          <div
+            id="testimonialTrack"
+            class="flex gap-6 transition-transform duration-500 ease-in-out mt-4"
+          >
+            <!-- Testimonial 1 -->
+            <div
+              class="testi-card min-w-[280px] bg-white p-5 rounded-xl shadow-md relative"
+            >
+              <i
+                class="fas fa-quote-left text-green-500 text-2xl absolute -top-3 -left-3"
+              ></i>
+              <strong class="block mb-2">Ibrahim · Pelajar</strong>
+              <p class="text-sm">
+                Nasi uduknya enak, paling mantap dimakan pakai bala-bala.
+              </p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div
+              class="testi-card min-w-[280px] bg-white p-5 rounded-xl shadow-md relative"
+            >
+              <i
+                class="fas fa-quote-left text-green-500 text-2xl absolute -top-3 -left-3"
+              ></i>
+              <strong class="block mb-2">Apriyanti · Pelajar</strong>
+              <p class="text-sm">
+                Harganya murah tapi rasanya enak, cocok buat sarapan.
+              </p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div
+              class="testi-card min-w-[280px] bg-white p-5 rounded-xl shadow-md relative"
+            >
+              <i
+                class="fas fa-quote-left text-green-500 text-2xl absolute -top-3 -left-3"
+              ></i>
+              <strong class="block mb-2">Usy · Pelajar</strong>
+              <p class="text-sm">
+                Worth it banget dengan harga segitu, porsinya juga pas.
+              </p>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div
+              class="testi-card min-w-[280px] bg-white p-5 rounded-xl shadow-md relative"
+            >
+              <i
+                class="fas fa-quote-left text-green-500 text-2xl absolute -top-3 -left-3"
+              ></i>
+              <strong class="block mb-2">Aan Heriyanto · Kepala Desa Kalangsari</strong>
+              <p class="text-sm">
+                Rasanya konsisten dan cocok di lidah masyarakat.
+              </p>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div
+              class="testi-card min-w-[280px] bg-white p-5 rounded-xl shadow-md relative"
+            >
+              <i
+                class="fas fa-quote-left text-green-500 text-2xl absolute -top-3 -left-3"
+              ></i>
+              <strong class="block mb-2">Bilal · Pelajar</strong>
+              <p class="text-sm">
+                Saya suka karena nasinya diantar langsung dan masih hangat.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      const container = document.getElementById('testiContainer')
+      const track = document.getElementById('testimonialTrack')
+      const cards = Array.from(document.querySelectorAll('.testi-card'))
+
+      const cardWidth = 280 + 24 // lebar card + gap
+      let index = 0
+      let isDragging = false
+      let startX = 0
+      let autoplay
+
+      // CLONE CARDS UNTUK INFINITE LOOP
+      cards.forEach(card => track.appendChild(card.cloneNode(true)))
+
+      function moveToIndex(animate = true) {
+        track.style.transition = animate ? 'transform 0.5s ease' : 'none'
+        track.style.transform = `translateX(-${index * cardWidth}px)`
+      }
+
+      function next() {
+        index++
+        moveToIndex()
+
+        if (index >= cards.length) {
+          // reset tanpa animasi
+          setTimeout(() => {
+            index = 0
+            moveToIndex(false)
+          }, 500)
+        }
+      }
+
+      function prev() {
+        if (index === 0) {
+          index = cards.length
+          moveToIndex(false)
+        }
+        index--
+        moveToIndex()
+      }
+
+      // AUTOPLAY
+      function startAuto() {
+        autoplay = setInterval(next, 2500)
+      }
+      function stopAuto() {
+        clearInterval(autoplay)
+      }
+
+      // POINTER EVENTS UNTUK DESKTOP + MOBILE
+      container.addEventListener('pointerdown', e => {
+        isDragging = true
+        startX = e.clientX
+        stopAuto()
+        container.setPointerCapture(e.pointerId)
+      })
+
+      container.addEventListener('pointermove', e => {
+        if (!isDragging) return
+        const diff = e.clientX - startX
+        track.style.transition = 'none'
+        track.style.transform = `translateX(${-index * cardWidth + diff}px)`
+      })
+
+      container.addEventListener('pointerup', e => {
+        if (!isDragging) return
+        isDragging = false
+
+        const diff = e.clientX - startX
+        if (diff < -50) next()
+        else if (diff > 50) prev()
+        else moveToIndex()
+
+        startAuto()
+      })
+
+      container.addEventListener('pointerleave', e => {
+        if (!isDragging) return
+        isDragging = false
+        moveToIndex()
+        startAuto()
+      })
+
+      // MULAI AUTOPLAY
+      startAuto()
+    </script>
+
+    <section
+      id="contact"
+      class="py-16 md:py-20 bg-gradient-to-b from-white to-[#fbfbf7]"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <!-- TITLE -->
+        <div class="text-center mb-8 md:mb-12">
+          <h2
+            class="text-2xl md:text-3xl font-extrabold text-[var(--leaf-dark)] flex items-center justify-center gap-3"
+          >
+            <i class="fa-solid fa-headset text-[var(--leaf-light)]"></i>
+            Kontak & Pemesanan
+          </h2>
+          <p class="text-xs md:text-sm text-gray-500 mt-2">
+            Hubungi kami untuk pemesanan harian atau catering acara
+          </p>
+        </div>
+
+        <!-- CARD -->
+        <div
+          class="bg-white rounded-2xl shadow-lg max-w-4xl mx-auto p-6 md:p-8 space-y-6"
+        >
+          <!-- FORM -->
+          <form
+            onsubmit="event.preventDefault(); alert('Terima kasih, pesan Anda sudah kami terima 🙏');"
+            class="space-y-4"
+          >
+            <!-- NAMA & WA -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
+                <i class="fa-solid fa-user text-gray-400"></i>
+                <input
+                  type="text"
+                  placeholder="Nama lengkap"
+                  required
+                  class="w-full outline-none text-sm"
+                />
+              </div>
+
+              <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
+                <i class="fa-brands fa-whatsapp text-green-500"></i>
+                <input
+                  type="tel"
+                  placeholder="Nomor WhatsApp"
+                  required
+                  class="w-full outline-none text-sm"
+                />
+              </div>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
+              <i class="fa-solid fa-envelope text-gray-400"></i>
+              <input
+                type="email"
+                placeholder="Email (opsional)"
+                class="w-full outline-none text-sm"
+              />
+            </div>
+
+            <!-- PESAN -->
+            <div class="flex gap-3 border rounded-xl px-4 py-3">
+              <i class="fa-solid fa-pen-to-square text-gray-400 mt-1"></i>
+              <textarea
+                rows="4"
+                placeholder="Pesan, menu yang dipesan, atau tanggal acara"
+                required
+                class="w-full outline-none text-sm resize-none"
+              ></textarea>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                type="submit"
+                class="flex items-center justify-center gap-2 bg-[var(--leaf-dark)] hover:bg-[var(--brand-green)] text-[var(--rice)] font-bold px-6 py-3 rounded-xl shadow-md transition"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+                Kirim Pesanan
+              </button>
+
+              <button
+                type="button"
+                onclick="window.open('https://wa.me/62812XXXXXXXX','_blank')"
+                class="flex items-center justify-center gap-2 bg-[#25D366] hover:opacity-90 text-white font-bold px-6 py-3 rounded-xl shadow-md transition"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+                Chat WhatsApp
+              </button>
+            </div>
+          </form>
+
+          <!-- INFO BAR -->
+          <div
+            class="pt-4 border-t grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-[#466650]"
+          >
+            <div
+              class="flex items-center gap-2 justify-center sm:justify-start"
+            >
+              <i class="fa-solid fa-clock"></i>
+              Buka setiap hari · 05.00 – 11.00 WIB
+            </div>
+
+            <div class="flex items-center gap-2 justify-center sm:justify-end">
+              <i class="fa-solid fa-location-dot"></i>
+              Kalangsari, Karawang
+            </div>
+          </div>
+
+          <!-- MAP WITH POINTER ICON -->
+          <div class="relative w-full h-64 rounded-xl overflow-hidden mt-6">
+            <!-- POINTER ICON -->
+            <i
+              class="fa-solid fa-location-dot text-red-500 text-3xl absolute top-2 left-2 drop-shadow-lg"
+              title="Lokasi kami"
+            ></i>
+
+            <!-- EMBED MAP -->
+            <iframe
+              src="https://www.google.com/maps?q=-6.218490,107.293888&hl=id&z=15&output=embed"
+              class="w-full h-full border-0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-gradient-to-br from-[var(--leaf-dark)] to-[var(--brand-green)] text-white"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8"
+      >
+        <!-- Brand -->
+        <div>
+          <h3 class="text-base font-bold text-[var(--rice)]">
+            Nasi Uduk Badriyah
+          </h3>
+          <p class="mt-2 text-sm text-white/80 leading-relaxed">
+            Nasi uduk gurih dan autentik, dimasak harian. Melayani antar dan
+            catering untuk berbagai acara.
+          </p>
+        </div>
+
+        <!-- Layanan -->
+        <div>
+          <h4 class="font-semibold mb-3 text-[var(--rice)]">Layanan</h4>
+          <ul class="space-y-2 text-sm text-white/80">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-bowl-rice"></i>
+              Nasi uduk harian
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-box"></i>
+              Pesanan & pre-order
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-utensils"></i>
+              Catering acara
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kontak & Lokasi -->
+        <div class="space-y-3">
+          <h4 class="font-semibold text-[var(--rice)]">Kontak & Lokasi</h4>
+
+          <div class="flex items-start gap-2 text-sm text-white/80">
+            <i class="fa-solid fa-location-dot mt-0.5"></i>
+            <span>
+              Rengasdengklok, Kalangsari<br />
+              <span class="text-xs opacity-80">
+                Dekat Kantor Desa Kalangsari
+              </span>
+            </span>
+          </div>
+
+          <a
+            href="https://wa.me/6281517955194"
+            target="_blank"
+            class="flex items-center gap-3 text-sm bg-white/10 hover:bg-white/20 transition px-4 py-3 rounded-xl w-fit"
+          >
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <div>
+              <div class="font-semibold">WhatsApp</div>
+              <div class="text-xs text-white/80">Chat & Pemesanan</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20">
+        <p class="text-center text-xs text-white/70 py-3">
+          © 2025 Nasi Uduk Badriyah · Dibuat dengan cinta lokal
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({ duration: 700, easing: 'ease-in-out' })
+    </script>
+
+    <script>
+      // Utilities
+      const qs = s => document.querySelector(s)
+      const qsa = s => Array.from(document.querySelectorAll(s))
+
+      // Smooth scroll for links (desktop + mobile)
+      function smoothScrollTo(hash) {
+        const target = document.querySelector(hash)
+        if (!target) return
+        const nav = qs('nav')
+        const navHeight = nav ? nav.offsetHeight : 60
+        window.scrollTo({
+          top: target.offsetTop - navHeight + 4,
+          behavior: 'smooth'
+        })
+      }
+
+      // handle nav link clicks (both desktop and mobile)
+      function setupLinkClicks() {
+        qsa('.nav-link, .nav-link-mobile').forEach(a => {
+          a.addEventListener('click', e => {
+            e.preventDefault()
+            const href = a.getAttribute('href')
+            smoothScrollTo(href)
+
+            // close mobile menu if open
+            const burger = qs('.burger')
+            if (burger && burger.getAttribute('aria-expanded') === 'true') {
+              toggleMobile(false)
+            }
+
+            // set active immediately for both desktop & mobile
+            qsa('.nav-link, .nav-link-mobile').forEach(x =>
+              x.classList.remove('nav-link-active')
+            )
+            qsa(`a[href="${href}"]`).forEach(x =>
+              x.classList.add('nav-link-active')
+            )
+
+            // desktop aria-current
+            qsa('.nav-link').forEach(l => l.removeAttribute('aria-current'))
+            const desktopLink = qs(`.nav-link[href="${href}"]`)
+            if (desktopLink) desktopLink.setAttribute('aria-current', 'page')
+          })
+        })
+      }
+
+      // Mobile toggle
+      function toggleMobile(force) {
+        const burger = qs('.burger')
+        const mobileMenu = qs('#mobileMenu')
+        if (!burger || !mobileMenu) return
+        const isOpen = burger.getAttribute('aria-expanded') === 'true'
+        const open = typeof force === 'boolean' ? force : !isOpen
+        burger.setAttribute('aria-expanded', String(open))
+        if (open) {
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px'
+          mobileMenu.classList.add('open')
+          mobileMenu.setAttribute('aria-hidden', 'false')
+        } else {
+          mobileMenu.style.maxHeight = '0px'
+          mobileMenu.classList.remove('open')
+          mobileMenu.setAttribute('aria-hidden', 'true')
+        }
+      }
+
+      // setup burger button
+      function setupBurger() {
+        const burger = qs('.burger')
+        if (!burger) return
+        burger.addEventListener('click', () => toggleMobile())
+        // close menu on outside click
+        document.addEventListener('click', e => {
+          const mobileMenu = qs('#mobileMenu')
+          if (!mobileMenu) return
+          if (
+            !mobileMenu.contains(e.target) &&
+            !e.target.closest('.burger') &&
+            burger.getAttribute('aria-expanded') === 'true'
+          ) {
+            toggleMobile(false)
+          }
+        })
+      }
+
+      // Improved IntersectionObserver: pick section with highest visible ratio
+      function setupObserver() {
+        const nav = qs('nav')
+        const navHeight = nav ? nav.offsetHeight : 60
+
+        const desktopLinks = qsa('.nav-link')
+        const sections = desktopLinks
+          .map(l => document.querySelector(l.getAttribute('href')))
+          .filter(Boolean)
+        if (!sections.length) return
+
+        const latestEntries = new Map()
+        const observerOptions = {
+          root: null,
+          rootMargin: `-${navHeight}px 0px -40% 0px`,
+          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
+        }
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(en => latestEntries.set(en.target.id, en))
+          const visible = Array.from(latestEntries.values()).filter(
+            e => e.intersectionRatio > 0
+          )
+          if (visible.length === 0) return
+          visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+          const topEntry = visible[0]
+          const id = topEntry.target.id ? `#${topEntry.target.id}` : null
+          if (!id) return
+
+          qsa('.nav-link, .nav-link-mobile').forEach(x =>
+            x.classList.remove('nav-link-active')
+          )
+          qsa('nav a').forEach(l => l.removeAttribute('aria-current'))
+          qsa(`a[href="${id}"]`).forEach(x =>
+            x.classList.add('nav-link-active')
+          )
+          const desktop = qs(`.nav-link[href="${id}"]`)
+          if (desktop) desktop.setAttribute('aria-current', 'page')
+        }, observerOptions)
+
+        sections.forEach(s => observer.observe(s))
+
+        // initial active based on nearest top line
+        function setActiveOnLoad() {
+          const navH = nav ? nav.offsetHeight : navHeight
+          let best = null
+          let bestScore = Infinity
+          for (const s of sections) {
+            const rect = s.getBoundingClientRect()
+            const ref = navH + 8
+            const score = Math.abs(rect.top - ref)
+            if (score < bestScore) {
+              bestScore = score
+              best = s
+            }
+          }
+          if (best) {
+            const id = `#${best.id}`
+            qsa('.nav-link, .nav-link-mobile').forEach(x =>
+              x.classList.remove('nav-link-active')
+            )
+            qsa(`a[href="${id}"]`).forEach(x =>
+              x.classList.add('nav-link-active')
+            )
+            qsa('.nav-link').forEach(l => l.removeAttribute('aria-current'))
+            const desktop = qs(`.nav-link[href="${id}"]`)
+            if (desktop) desktop.setAttribute('aria-current', 'page')
+          } else {
+            const home = qs('.nav-link[href="#home"]')
+            if (home) {
+              home.classList.add('nav-link-active')
+              home.setAttribute('aria-current', 'page')
+            }
+          }
+        }
+        setTimeout(setActiveOnLoad, 120)
+      }
+
+      // init
+      document.addEventListener('DOMContentLoaded', () => {
+        setupBurger()
+        setupLinkClicks()
+        setupObserver()
+      })
+
+      // close mobile menu on resize to desktop
+      window.addEventListener('resize', () => {
+        const burger = qs('.burger')
+        if (
+          window.innerWidth >= 768 &&
+          burger &&
+          burger.getAttribute('aria-expanded') === 'true'
+        ) {
+          toggleMobile(false)
+        }
+      })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
