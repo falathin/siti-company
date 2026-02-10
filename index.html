@@ -234,19 +234,19 @@
     </script>
 
     <!-- ABOUT -->
-    <section id="about" class="py-16">
+    <section id="about" class="py-16 bg-[var(--kerupuk)]">
       <div class="max-w-6xl mx-auto px-4">
         <h2
-          class="text-2xl font-extrabold text-[var(--leaf-dark)] text-center mb-7"
+          class="text-2xl md:text-3xl font-extrabold text-[var(--leaf-dark)] text-center mb-8"
         >
           Tentang Nasi Uduk Badriyah
         </h2>
 
         <div
-          class="bg-white rounded-xl p-6 shadow-md flex flex-col md:flex-row gap-6 items-center"
+          class="bg-white rounded-2xl p-6 md:p-8 shadow-md flex flex-col md:flex-row gap-8 items-center"
         >
           <!-- LOGO -->
-          <div class="w-36 md:w-56 flex-shrink-0 flex justify-center">
+          <div class="w-40 md:w-56 flex-shrink-0 flex justify-center">
             <img
               src="logo.png"
               alt="Nasi Uduk Badriyah"
@@ -256,23 +256,63 @@
 
           <!-- CONTENT -->
           <div class="flex-1 min-w-0 text-center md:text-left">
+            <!-- TAGLINE -->
             <p
-              class="text-[var(--leaf-dark)] font-bold mb-2 flex items-center gap-2 justify-center md:justify-start"
+              class="text-[var(--leaf-dark)] font-bold mb-3 flex items-center gap-2 justify-center md:justify-start"
             >
-              <i class="fa-solid fa-leaf"></i>
+              <i class="fa-solid fa-leaf text-[var(--leaf-light)]"></i>
               Rasa tradisional, disajikan hangat dan wangi
             </p>
 
-            <p class="text-[#2e4f3b] mb-4">
-              Nasi uduk keliling sekitar Kalangsari mulai hadir sejak 2018.
-              Dibuat dari santan pilihan dan dimasak setiap hari agar rasanya selalu segar.
-              Disajikan lengkap dengan tempe goreng, tahu kuning, bihun, sambal kacang,
-              serta taburan bawang goreng yang bikin cita rasanya tetap konsisten.
+            <!-- DESC -->
+            <p class="text-[#2e4f3b] mb-5 leading-relaxed">
+              Nasi Uduk Badriyah hadir sejak 2018 di sekitar Kalangsari.
+              Dimasak setiap hari menggunakan santan pilihan agar rasa nasi
+              tetap gurih, harum, dan konsisten. Disajikan lengkap dengan
+              tempe, tahu, bihun, sambal kacang, dan bawang goreng.
             </p>
+
+            <!-- VISI -->
+            <div class="mb-5">
+              <h3
+                class="font-extrabold text-[var(--leaf-dark)] flex items-center gap-2 justify-center md:justify-start"
+              >
+                <i class="fa-solid fa-bullseye text-[var(--leaf-light)]"></i>
+                Visi
+              </h3>
+              <p class="text-[#2e4f3b] mt-1">
+                Menjadi nasi uduk favorit keluarga dengan rasa tradisional
+                yang selalu segar dan konsisten setiap hari.
+              </p>
+            </div>
+
+            <!-- MISI -->
+            <div class="mb-6">
+              <h3
+                class="font-extrabold text-[var(--leaf-dark)] flex items-center gap-2 justify-center md:justify-start"
+              >
+                <i class="fa-solid fa-list-check text-[var(--leaf-light)]"></i>
+                Misi
+              </h3>
+              <ul class="mt-2 space-y-2 text-[#2e4f3b] text-sm md:text-base">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-[var(--leaf-light)] mt-1"></i>
+                  Memasak nasi uduk segar setiap hari.
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-[var(--leaf-light)] mt-1"></i>
+                  Menggunakan bahan pilihan tanpa pengawet.
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-[var(--leaf-light)] mt-1"></i>
+                  Menjaga kebersihan, rasa, dan pelayanan ramah.
+                </li>
+              </ul>
+            </div>
 
             <!-- INFO STRIP -->
             <div
-              class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 bg-gradient-to-r from-[rgba(249,228,173,0.10)] to-[rgba(45,90,39,0.03)] border-l-4 rounded-lg p-4"
+              class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 bg-gradient-to-r from-[rgba(249,228,173,0.12)] to-[rgba(45,90,39,0.05)] border-l-4 rounded-lg p-4"
               style="border-left-color: var(--tempe)"
             >
               <div
@@ -286,7 +326,7 @@
                 class="flex items-center gap-2 font-semibold text-[#466650] sm:ml-auto"
               >
                 <i class="fa-solid fa-motorcycle"></i>
-                Siap antar dan catering
+                Siap antar & catering
               </div>
             </div>
           </div>
@@ -311,7 +351,7 @@
             data-price="5000"
           >
             <img
-              src="https://images.unsplash.com/photo-1604908177522-7f2b0f9d2b3d?auto=format&fit=crop&w=400&q=60"
+              src="nasi-uduk-1.png"
               class="w-full h-36 rounded-xl object-cover mb-4"
             />
 
@@ -399,7 +439,7 @@
             data-price="6000"
           >
             <img
-              src="https://images.unsplash.com/photo-1604908554021-58b0b0b3f8d3?auto=format&fit=crop&w=400&q=60"
+              src="nasi-uduk-3.png"
               class="w-full h-36 rounded-xl object-cover mb-4"
             />
 
@@ -493,76 +533,178 @@
       </div>
     </section>
 
+    <!-- IMAGE MODAL (paste once, mis. sebelum </body>) -->
+    <div id="imageModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="relative max-w-4xl w-full">
+        <!-- Close -->
+        <button id="modalClose" aria-label="Close" class="absolute right-2 top-2 z-20 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <!-- Prev -->
+        <button id="modalPrev" class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"></path>
+          </svg>
+        </button>
+
+        <!-- Next -->
+        <button id="modalNext" class="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 6l6 6-6 6"></path>
+          </svg>
+        </button>
+
+        <!-- Content -->
+        <div class="bg-white rounded-xl overflow-hidden">
+          <div class="flex flex-col md:flex-row items-stretch">
+            <div class="w-full md:w-2/3 flex items-center justify-center bg-black">
+              <img id="modalImg" src="" alt="" class="max-w-full max-h-[80vh] object-contain block" />
+            </div>
+
+            <div class="w-full md:w-1/3 p-4">
+              <h3 id="modalTitle" class="text-lg font-bold text-[var(--leaf-dark)]"></h3>
+              <p id="modalPrice" class="mt-2 text-sm text-gray-600 font-semibold"></p>
+              <p id="modalDesc" class="mt-3 text-sm text-gray-500">
+                Klik panah atau geser untuk melihat gambar lain. Klik area gelap atau tombol × untuk menutup.
+              </p>
+
+              <div class="mt-4 flex gap-2">
+                <button id="modalOpenWhatsApp" class="flex items-center gap-2 bg-[var(--leaf-dark)] text-white px-3 py-2 rounded-lg">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  Pesan via WhatsApp
+                </button>
+                <button id="modalZoomFull" class="flex items-center gap-2 border px-3 py-2 rounded-lg">
+                  Lihat gambar penuh
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS: attach to .menu-card img, modal control -->
     <script>
-      function changeQty(btn, change) {
-        const qtyEl = btn.parentElement.querySelector('.qty')
-        let qty = parseInt(qtyEl.textContent)
-        qty = Math.max(0, qty + change)
-        qtyEl.textContent = qty
-      }
+      (function () {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
+        const modalOpenWhatsApp = document.getElementById('modalOpenWhatsApp');
+        const modalZoomFull = document.getElementById('modalZoomFull');
+        const container = document.getElementById('testiContainer') || document.body;
 
-      function orderWhatsApp() {
-        const cards = document.querySelectorAll('.menu-card')
-        let orderList = []
-        let total = 0
-
-        cards.forEach(card => {
-          const name = card.dataset.name
-          const price = parseInt(card.dataset.price)
-          const qty = parseInt(card.querySelector('.qty').textContent)
-
-          if (qty > 0) {
-            const subtotal = price * qty
-            total += subtotal
-
-            orderList.push(
-              `- ${name}\n  ${qty} x Rp ${price.toLocaleString()} = Rp ${subtotal.toLocaleString()}`
-            )
+        // Collect gallery from menu cards
+        const menuCards = Array.from(document.querySelectorAll('.menu-card'));
+        const gallery = menuCards.map(card => {
+          const img = card.querySelector('img');
+          return {
+            src: img ? img.getAttribute('src') : '',
+            name: card.dataset.name || '',
+            price: card.dataset.price ? `Rp ${Number(card.dataset.price).toLocaleString()}` : '',
+            cardEl: card
           }
-        })
+        }).filter(item => item.src);
 
-        if (!orderList.length) {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Menu belum dipilih',
-            text: 'Silakan pilih minimal satu menu terlebih dahulu',
-            confirmButtonColor: '#2d5a27'
-          })
-          return
+        if (!gallery.length) return; // nothing to do
+
+        // Create clickable behavior on each menu image
+        gallery.forEach((item, i) => {
+          const imgEl = menuCards[i].querySelector('img');
+          if (!imgEl) return;
+          imgEl.style.cursor = 'zoom-in';
+          imgEl.addEventListener('click', () => openModal(i));
+        });
+
+        let current = 0;
+        function openModal(index) {
+          current = index;
+          show(current);
+          modal.classList.remove('hidden');
+          // prevent body scroll while modal open
+          document.documentElement.style.overflow = 'hidden';
+          document.body.style.overflow = 'hidden';
         }
 
-        const message = `Assalamualaikum warahmatullahi wabarakatuh,
+        function closeModal() {
+          modal.classList.add('hidden');
+          document.documentElement.style.overflow = '';
+          document.body.style.overflow = '';
+        }
 
-    Halo, saya ingin melakukan pemesanan dengan rincian:
+        function show(i) {
+          const item = gallery[i];
+          modalImg.src = item.src;
+          modalImg.alt = item.name || 'Gambar menu';
+          modalTitle.textContent = item.name || '';
+          modalPrice.textContent = item.price || '';
+          // update WA button with prefilled message
+          modalOpenWhatsApp.onclick = () => {
+            const phone = '6281517955194';
+            const msg = `Assalamualaikum, saya mau pesan: ${item.name} (${item.price || 'harga'}).`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+          };
+        }
 
-    ${orderList.join('\n\n')}
+        function next() {
+          current = (current + 1) % gallery.length;
+          show(current);
+        }
 
-    Total sementara: Rp ${total.toLocaleString()}
+        function prev() {
+          current = (current - 1 + gallery.length) % gallery.length;
+          show(current);
+        }
 
-    Mohon diinformasikan total akhir dan estimasi waktu pengambilan.
+        // Events
+        modalClose.addEventListener('click', closeModal);
+        modalNext.addEventListener('click', next);
+        modalPrev.addEventListener('click', prev);
 
-    Terima kasih.`
+        // click outside content closes modal
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
 
-        const phone = '6281517955194'
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+        // keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (modal.classList.contains('hidden')) return;
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowRight') next();
+          if (e.key === 'ArrowLeft') prev();
+        });
 
-        Swal.fire({
-          icon: 'question',
-          title: 'Konfirmasi Pesanan',
-          html: `<pre style="text-align:left">${orderList.join(
-            '\n\n'
-          )}\n\nTotal: Rp ${total.toLocaleString()}</pre>`,
-          showCancelButton: true,
-          confirmButtonText: 'Pesan via WhatsApp',
-          cancelButtonText: 'Batal',
-          confirmButtonColor: '#25D366'
-        }).then(result => {
-          if (result.isConfirmed) {
-            window.open(url, '_blank')
-          }
-        })
-      }
+        // Touch / swipe support (simple)
+        let startX = 0;
+        modal.addEventListener('pointerdown', (e) => {
+          startX = e.clientX;
+          modal.setPointerCapture(e.pointerId);
+        });
+        modal.addEventListener('pointerup', (e) => {
+          const diff = e.clientX - startX;
+          if (diff < -40) next();
+          else if (diff > 40) prev();
+        });
+
+        // Zoom full: open image src in new tab (or you can toggle full-screen)
+        modalZoomFull.addEventListener('click', () => {
+          const url = modalImg.src;
+          window.open(url, '_blank');
+        });
+
+        // Responsive tweak: ensure image fits nicely on resize
+        window.addEventListener('resize', () => {
+          // nothing required, image uses max-h and object-contain
+        });
+      })();
     </script>
+
 
     <section id="testi" class="py-16 bg-[#f8faf7]">
       <div class="max-w-6xl mx-auto px-4">
