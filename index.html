@@ -1067,21 +1067,22 @@
       startAuto()
     </script>
 
+    <!-- CONTACT -->
     <section
       id="contact"
       class="py-16 md:py-20 bg-gradient-to-b from-white to-[#fbfbf7]"
     >
       <div class="max-w-6xl mx-auto px-4">
         <!-- TITLE -->
-        <div class="text-center mb-8 md:mb-12">
+        <div class="text-center mb-10">
           <h2
             class="text-2xl md:text-3xl font-extrabold text-[var(--leaf-dark)] flex items-center justify-center gap-3"
           >
             <i class="fa-solid fa-headset text-[var(--leaf-light)]"></i>
-            Kontak & Pemesanan
+            Kontak & Lokasi
           </h2>
-          <p class="text-xs md:text-sm text-gray-500 mt-2">
-            Hubungi kami untuk pemesanan harian atau catering acara
+          <p class="text-sm text-gray-500 mt-2">
+            Pemesanan & informasi lokasi Nasi Uduk Badriyah
           </p>
         </div>
 
@@ -1089,106 +1090,64 @@
         <div
           class="bg-white rounded-2xl shadow-lg max-w-4xl mx-auto p-6 md:p-8 space-y-6"
         >
-          <!-- FORM -->
-          <form
-            onsubmit="event.preventDefault(); alert('Terima kasih, pesan Anda sudah kami terima 🙏');"
-            class="space-y-4"
-          >
-            <!-- NAMA & WA -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
-                <i class="fa-solid fa-user text-gray-400"></i>
-                <input
-                  type="text"
-                  placeholder="Nama lengkap"
-                  required
-                  class="w-full outline-none text-sm"
-                />
-              </div>
-
-              <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
-                <i class="fa-brands fa-whatsapp text-green-500"></i>
-                <input
-                  type="tel"
-                  placeholder="Nomor WhatsApp"
-                  required
-                  class="w-full outline-none text-sm"
-                />
+          <!-- CONTACT INFO -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-whatsapp text-2xl text-[#25D366]"></i>
+              <div>
+                <p class="font-bold text-[var(--leaf-dark)]">WhatsApp</p>
+                <a
+                  href="https://wa.me/6281517955194"
+                  target="_blank"
+                  class="text-[#466650] hover:underline"
+                >
+                  0815-1795-5194
+                </a>
               </div>
             </div>
 
-            <!-- EMAIL -->
-            <div class="flex items-center gap-3 border rounded-xl px-4 py-3">
-              <i class="fa-solid fa-envelope text-gray-400"></i>
-              <input
-                type="email"
-                placeholder="Email (opsional)"
-                class="w-full outline-none text-sm"
-              />
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-clock text-2xl text-[var(--leaf-light)]"></i>
+              <div>
+                <p class="font-bold text-[var(--leaf-dark)]">Jam Operasional</p>
+                <p class="text-[#466650]">Setiap hari · 05.00 – 11.00 WIB</p>
+              </div>
             </div>
 
-            <!-- PESAN -->
-            <div class="flex gap-3 border rounded-xl px-4 py-3">
-              <i class="fa-solid fa-pen-to-square text-gray-400 mt-1"></i>
-              <textarea
-                rows="4"
-                placeholder="Pesan, menu yang dipesan, atau tanggal acara"
-                required
-                class="w-full outline-none text-sm resize-none"
-              ></textarea>
-            </div>
-
-            <!-- BUTTON -->
-            <div class="flex flex-col sm:flex-row gap-3 pt-2">
-              <button
-                type="submit"
-                class="flex items-center justify-center gap-2 bg-[var(--leaf-dark)] hover:bg-[var(--brand-green)] text-[var(--rice)] font-bold px-6 py-3 rounded-xl shadow-md transition"
-              >
-                <i class="fa-solid fa-paper-plane"></i>
-                Kirim Pesanan
-              </button>
-
-              <button
-                type="button"
-                onclick="window.open('https://wa.me/62812XXXXXXXX','_blank')"
-                class="flex items-center justify-center gap-2 bg-[#25D366] hover:opacity-90 text-white font-bold px-6 py-3 rounded-xl shadow-md transition"
-              >
-                <i class="fa-brands fa-whatsapp"></i>
-                Chat WhatsApp
-              </button>
-            </div>
-          </form>
-
-          <!-- INFO BAR -->
-          <div
-            class="pt-4 border-t grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-[#466650]"
-          >
-            <div
-              class="flex items-center gap-2 justify-center sm:justify-start"
-            >
-              <i class="fa-solid fa-clock"></i>
-              Buka setiap hari · 05.00 – 11.00 WIB
-            </div>
-
-            <div class="flex items-center gap-2 justify-center sm:justify-end">
-              <i class="fa-solid fa-location-dot"></i>
-              Kalangsari, Karawang
+            <div class="flex items-center gap-3 md:col-span-2">
+              <i class="fa-solid fa-location-dot text-2xl text-red-500"></i>
+              <div>
+                <p class="font-bold text-[var(--leaf-dark)]">Lokasi</p>
+                <p class="text-[#466650]">
+                  Kalangsari, Rengasdengklok, Karawang
+                </p>
+              </div>
             </div>
           </div>
 
-          <!-- MAP WITH POINTER ICON -->
+          <!-- CTA BUTTON -->
+          <div class="text-center pt-2">
+            <a
+              href="https://wa.me/6281517955194"
+              target="_blank"
+              class="inline-flex items-center gap-2 bg-[#25D366] hover:opacity-90 text-white font-extrabold px-8 py-4 rounded-xl shadow-md transition"
+            >
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              Pesan via WhatsApp
+            </a>
+          </div>
+
+          <!-- MAP -->
           <div class="relative w-full h-64 rounded-xl overflow-hidden mt-6">
-            <!-- POINTER ICON -->
+            <!-- ICON POINTER -->
             <i
-              class="fa-solid fa-location-dot text-red-500 text-3xl absolute top-2 left-2 drop-shadow-lg"
-              title="Lokasi kami"
+              class="fa-solid fa-location-dot text-red-500 text-3xl absolute top-2 left-2 drop-shadow-lg z-10"
             ></i>
 
             <!-- EMBED MAP -->
             <iframe
               src="https://www.google.com/maps?q=-6.218490,107.293888&hl=id&z=15&output=embed"
               class="w-full h-full border-0"
-              allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
