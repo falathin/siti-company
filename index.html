@@ -676,159 +676,39 @@
 
     <!-- JS: attach to .menu-card img, modal control -->
     <script>
-      ;(function () {
-        const modal = document.getElementById('imageModal')
-        const modalImg = document.getElementById('modalImg')
-        const modalTitle = document.getElementById('modalTitle')
-        const modalPrice = document.getElementById('modalPrice')
-        const modalClose = document.getElementById('modalClose')
-        const modalPrev = document.getElementById('modalPrev')
-        const modalNext = document.getElementById('modalNext')
-        const modalOpenWhatsApp = document.getElementById('modalOpenWhatsApp')
-        const modalZoomFull = document.getElementById('modalZoomFull')
-        const container =
-          document.getElementById('testiContainer') || document.body
-
-        // Collect gallery from menu cards
-        const menuCards = Array.from(document.querySelectorAll('.menu-card'))
-        const gallery = menuCards
-          .map(card => {
-            const img = card.querySelector('img')
-            return {
-              src: img ? img.getAttribute('src') : '',
-              name: card.dataset.name || '',
-              price: card.dataset.price
-                ? `Rp ${Number(card.dataset.price).toLocaleString()}`
-                : '',
-              cardEl: card
-            }
-          })
-          .filter(item => item.src)
-
-        if (!gallery.length) return // nothing to do
-
-        // Create clickable behavior on each menu image
-        gallery.forEach((item, i) => {
-          const imgEl = menuCards[i].querySelector('img')
-          if (!imgEl) return
-          imgEl.style.cursor = 'zoom-in'
-          imgEl.addEventListener('click', () => openModal(i))
-        })
-
-        let current = 0
-        function openModal(index) {
-          current = index
-          show(current)
-          modal.classList.remove('hidden')
-          // prevent body scroll while modal open
-          document.documentElement.style.overflow = 'hidden'
-          document.body.style.overflow = 'hidden'
-        }
-
-        function closeModal() {
-          modal.classList.add('hidden')
-          document.documentElement.style.overflow = ''
-          document.body.style.overflow = ''
-        }
-
-        function show(i) {
-          const item = gallery[i]
-          modalImg.src = item.src
-          modalImg.alt = item.name || 'Gambar menu'
-          modalTitle.textContent = item.name || ''
-          modalPrice.textContent = item.price || ''
-          // update WA button with prefilled message
-          modalOpenWhatsApp.onclick = () => {
-            const phone = '6281517955194'
-            const msg = `Assalamualaikum, saya mau pesan: ${item.name} (${
-              item.price || 'harga'
-            }).`
-            window.open(
-              `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
-              '_blank'
-            )
-          }
-        }
-
-        function next() {
-          current = (current + 1) % gallery.length
-          show(current)
-        }
-
-        function prev() {
-          current = (current - 1 + gallery.length) % gallery.length
-          show(current)
-        }
-
-        // Events
-        modalClose.addEventListener('click', closeModal)
-        modalNext.addEventListener('click', next)
-        modalPrev.addEventListener('click', prev)
-
-        // click outside content closes modal
-        modal.addEventListener('click', e => {
-          if (e.target === modal) closeModal()
-        })
-
-        // keyboard navigation
-        document.addEventListener('keydown', e => {
-          if (modal.classList.contains('hidden')) return
-          if (e.key === 'Escape') closeModal()
-          if (e.key === 'ArrowRight') next()
-          if (e.key === 'ArrowLeft') prev()
-        })
-
-        // Touch / swipe support (simple)
-        let startX = 0
-        modal.addEventListener('pointerdown', e => {
-          startX = e.clientX
-          modal.setPointerCapture(e.pointerId)
-        })
-        modal.addEventListener('pointerup', e => {
-          const diff = e.clientX - startX
-          if (diff < -40) next()
-          else if (diff > 40) prev()
-        })
-
-        // Zoom full: open image src in new tab (or you can toggle full-screen)
-        modalZoomFull.addEventListener('click', () => {
-          const url = modalImg.src
-          window.open(url, '_blank')
-        })
-
-        // Responsive tweak: ensure image fits nicely on resize
-        window.addEventListener('resize', () => {
-          // nothing required, image uses max-h and object-contain
-        })
-      })()
-    </script>
-
-    <script>
-      // helper: format angka ke Rp
+      /* =========================
+        HELPER FORMAT RUPIAH
+      ========================== */
       const fmt = n => new Intl.NumberFormat('id-ID').format(n)
 
-      // changeQty dipanggil oleh tombol + / - (onclick="changeQty(this,1)")
+      /* =========================
+        QTY BUTTON (+ / -)
+      ========================== */
       function changeQty(btn, delta) {
         const card = btn.closest('.menu-card')
         if (!card) return
+
         const qtyEl = card.querySelector('.qty')
-        let q = parseInt(qtyEl.textContent || '0', 10)
-        if (Number.isNaN(q)) q = 0
-        q = Math.max(0, q + delta)
-        qtyEl.textContent = q
+        let qty = parseInt(qtyEl.textContent || '0', 10)
+        if (isNaN(qty)) qty = 0
+
+        qty = Math.max(0, qty + delta)
+        qtyEl.textContent = qty
       }
 
-      // orderWhatsApp: kumpulkan item, tunjukkan konfirmasi SweetAlert, lalu buka WA
+      /* =========================
+        ORDER VIA WHATSAPP
+      ========================== */
       function orderWhatsApp() {
-        const cards = Array.from(document.querySelectorAll('.menu-card'))
-        const items = []
+        const cards = document.querySelectorAll('.menu-card')
+        let items = []
         let total = 0
 
         cards.forEach(card => {
-          const name = card.dataset.name || 'Menu'
-          const price = parseInt(card.dataset.price || '0', 10) || 0
-          const qty =
-            parseInt(card.querySelector('.qty').textContent || '0', 10) || 0
+          const name = card.dataset.name
+          const price = parseInt(card.dataset.price || '0', 10)
+          const qty = parseInt(card.querySelector('.qty').textContent || '0', 10)
+
           if (qty > 0) {
             const subtotal = price * qty
             total += subtotal
@@ -836,26 +716,30 @@
           }
         })
 
-        if (items.length === 0) {
-          // jika belum pilih, beri peringatan
+        /* =========================
+          JIKA BELUM PILIH MENU
+        ========================== */
+        if (!items.length) {
           if (window.Swal) {
             Swal.fire({
               icon: 'warning',
-              title: 'Belum memilih menu',
-              text: 'Silakan pilih minimal satu menu sebelum memesan.',
+              title: 'Menu belum dipilih',
+              text: 'Silakan pilih minimal satu menu.',
               confirmButtonColor: '#2d5a27'
             })
           } else {
-            alert('Silakan pilih minimal satu menu sebelum memesan.')
+            alert('Silakan pilih minimal satu menu.')
           }
           return
         }
 
-        // buat ringkasan order (pre)
-        const lines = items
+        /* =========================
+          RINGKASAN PESANAN
+        ========================== */
+        const listText = items
           .map(
             it =>
-              `- ${it.name}\n  ${it.qty} x Rp ${fmt(it.price)} = Rp ${fmt(
+              `• ${it.name}\n  ${it.qty} x Rp ${fmt(it.price)} = Rp ${fmt(
                 it.subtotal
               )}`
           )
@@ -863,85 +747,148 @@
 
         const totalText = `Rp ${fmt(total)}`
 
-        // gunakan SweetAlert2 untuk konfirmasi + input nama & catatan
-        if (window.Swal) {
-          Swal.fire({
-            title: 'Konfirmasi Pesanan',
-            html:
-              `<pre style="text-align:left;margin:0 0 12px 0;white-space:pre-wrap">${lines}\n\nTotal: ${totalText}</pre>` +
-              `<input id="swal-name" class="swal2-input" placeholder="Nama (wajib)"/>` +
-              `<textarea id="swal-note" class="swal2-textarea" placeholder="Catatan / Alamat / permintaan khusus (opsional)"></textarea>`,
-            showCancelButton: true,
-            confirmButtonText: 'Pesan via WhatsApp',
-            cancelButtonText: 'Batal',
-            focusConfirm: false,
-            preConfirm: () => {
-              const name = document.getElementById('swal-name').value.trim()
-              const note = document.getElementById('swal-note').value.trim()
-              if (!name) {
-                Swal.showValidationMessage('Nama harus diisi')
-                return false
-              }
-              return { name, note }
-            },
-            didOpen: () => {
-              const el = document.getElementById('swal-name')
-              if (el) el.focus()
+        /* =========================
+          MODAL KONFIRMASI
+        ========================== */
+        Swal.fire({
+          title: 'Konfirmasi Pesanan',
+          width: '100%',
+          customClass: { popup: 'swal-responsive' },
+          html: `
+            <div style="text-align:left;font-size:14px">
+              <div style="max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-bottom:12px">
+    ${listText}
+
+    <b>Total: ${totalText}</b>
+              </div>
+
+              <input id="swal-name"
+                class="swal2-input"
+                placeholder="Nama (wajib)"
+              />
+
+              <textarea id="swal-note"
+                class="swal2-textarea"
+                placeholder="Catatan / Alamat (opsional)"
+              ></textarea>
+            </div>
+          `,
+          showCancelButton: true,
+          confirmButtonText: 'Pesan via WhatsApp',
+          cancelButtonText: 'Batal',
+          confirmButtonColor: '#2d5a27',
+          focusConfirm: false,
+          preConfirm: () => {
+            const name = document.getElementById('swal-name').value.trim()
+            const note = document.getElementById('swal-note').value.trim()
+            if (!name) {
+              Swal.showValidationMessage('Nama harus diisi')
+              return false
             }
-          }).then(result => {
-            if (result.isConfirmed && result.value) {
-              const phone = '6281517955194'
-              const name = result.value.name
-              const note = result.value.note || ''
+            return { name, note }
+          }
+        }).then(result => {
+          if (!result.isConfirmed) return
 
-              const message = `Assalamualaikum warahmatullahi wabarakatuh,
+          const phone = '6281517955194'
+          const { name, note } = result.value
 
-Halo, saya ${name} ingin memesan:
-${items.map(it => `${it.qty}x ${it.name} (Rp ${fmt(it.price)})`).join(', ')}
-
-Rincian:
-${lines}
-
-Total sementara: ${totalText}
-
-Catatan / Alamat:
-${note}
-
-Terima kasih.`
-
-              const url = `https://wa.me/${phone}?text=${encodeURIComponent(
-                message
-              )}`
-              window.open(url, '_blank')
-            }
-          })
-        } else {
-          // fallback tanpa Swal
-          const name = prompt(`Masukkan nama untuk pesanan (wajib):`)
-          if (!name) return
-          const note = prompt('Catatan / alamat (opsional):') || ''
           const message = `Assalamualaikum warahmatullahi wabarakatuh,
 
-Halo, saya ${name} ingin memesan:
-${items.map(it => `${it.qty}x ${it.name} (Rp ${fmt(it.price)})`).join(', ')}
+    Halo, saya ${name} ingin memesan:
 
-Rincian:
-${lines}
+    ${listText}
 
-Total sementara: ${totalText}
+    Total sementara: ${totalText}
 
-Catatan / Alamat:
-${note}
+    Catatan / Alamat:
+    ${note || '-'}
 
-Terima kasih.`
-          const phone = '6281517955194'
-          window.open(
-            `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-            '_blank'
-          )
-        }
+    Terima kasih.`
+
+          const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+          window.open(url, '_blank')
+        })
       }
+
+      /* =========================
+        IMAGE MODAL (ZOOM MENU)
+      ========================== */
+      ;(function () {
+        const modal = document.getElementById('imageModal')
+        if (!modal) return
+
+        const modalImg = document.getElementById('modalImg')
+        const modalTitle = document.getElementById('modalTitle')
+        const modalPrice = document.getElementById('modalPrice')
+        const modalClose = document.getElementById('modalClose')
+        const modalPrev = document.getElementById('modalPrev')
+        const modalNext = document.getElementById('modalNext')
+        const modalWA = document.getElementById('modalOpenWhatsApp')
+
+        const cards = [...document.querySelectorAll('.menu-card')]
+        const gallery = cards.map(card => ({
+          img: card.querySelector('img')?.src,
+          name: card.dataset.name,
+          price: card.dataset.price
+        }))
+
+        let index = 0
+
+        cards.forEach((card, i) => {
+          const img = card.querySelector('img')
+          if (!img) return
+          img.style.cursor = 'zoom-in'
+          img.addEventListener('click', () => openModal(i))
+        })
+
+        function openModal(i) {
+          index = i
+          show()
+          modal.classList.remove('hidden')
+          document.body.style.overflow = 'hidden'
+        }
+
+        function closeModal() {
+          modal.classList.add('hidden')
+          document.body.style.overflow = ''
+        }
+
+        function show() {
+          const item = gallery[index]
+          modalImg.src = item.img
+          modalTitle.textContent = item.name
+          modalPrice.textContent = `Rp ${fmt(item.price)}`
+          modalWA.onclick = () => {
+            const msg = `Halo, saya ingin pesan ${item.name}`
+            window.open(
+              `https://wa.me/6281517955194?text=${encodeURIComponent(msg)}`,
+              '_blank'
+            )
+          }
+        }
+
+        modalPrev.onclick = () => {
+          index = (index - 1 + gallery.length) % gallery.length
+          show()
+        }
+
+        modalNext.onclick = () => {
+          index = (index + 1) % gallery.length
+          show()
+        }
+
+        modalClose.onclick = closeModal
+        modal.addEventListener('click', e => e.target === modal && closeModal())
+        document.addEventListener('keydown', e => {
+          if (modal.classList.contains('hidden')) return
+          if (e.key === 'Escape') closeModal()
+          if (e.key === 'ArrowRight') modalNext.click()
+          if (e.key === 'ArrowLeft') modalPrev.click()
+        })
+      })()
     </script>
+
 
     <section id="testi" class="py-16 bg-[#f8faf7]">
       <div class="max-w-6xl mx-auto px-4">
